@@ -8,6 +8,7 @@ target 'EcoFast' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+
   target 'EcoFastTests' do
     inherit! :complete
     # Pods for testing

@@ -10,3 +10,7 @@ export enum AuthNamesEnum {
   Verify = 'Auth_Verify',
   Forgot = 'Auth_Forgot',
 }
+
+export enum MainNamesEnum {
+  Home = 'Main_Home',
+}

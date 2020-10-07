@@ -7,11 +7,14 @@ import {persistReducer, persistStore} from 'redux-persist'
 
 export type Persistor = ReturnType<typeof persistStore>
 
-function createStoreWithMiddleware<AppState, AnyAction extends Action>(
+function createStoreWithMiddleware<AppState, AnyAction extends Action, TServices>(
   rootEpic: Epic<AnyAction, AnyAction, AppState>,
   rootReducer: Reducer<AppState>,
+  dependencies: TServices,
 ): {store: Store<AppState, AnyAction>; persistor: Persistor} {
-  const epicMiddleware = createEpicMiddleware<AnyAction, AnyAction, AppState>()
+  const epicMiddleware = createEpicMiddleware<AnyAction, AnyAction, AppState>({
+    dependencies,
+  })
   let enhancers: any[] = []
   let reactotron: any = null
   if (__DEV__) {
@@ -20,7 +23,7 @@ function createStoreWithMiddleware<AppState, AnyAction extends Action>(
   }
   const persistConfig = {
     key: 'root',
-    blacklist: [],
+    blacklist: ['auth'],
     storage: AsyncStorage,
   }
   const persistedReducer = persistReducer(persistConfig, rootReducer)

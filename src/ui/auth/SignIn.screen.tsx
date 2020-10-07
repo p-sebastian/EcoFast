@@ -5,14 +5,14 @@ import React from 'react'
 import {AuthHooks} from './Auth.hooks'
 import {AuthStyles as UI} from './Auth.styles'
 
-const SignUpScreen: React.FC = () => {
-  const {setValue, params, busy, toSignIn, onPress} = useSignUp()
-  const {password, email} = params
+const SignInScreen: React.FC = () => {
+  const {busy, setValue, params, onPress} = useSignIn()
+  const {email, password} = params
 
   return (
     <UI.Container>
       <C.Empty height={40} />
-      <UI.Title>Enter in a email address and create a password</UI.Title>
+      <UI.Title>Sign in with your Email and Password</UI.Title>
       <UI.InputContainer>
         <UI.Input
           editable={!busy}
@@ -36,19 +36,12 @@ const SignUpScreen: React.FC = () => {
           secureTextEntry
         />
       </UI.InputContainer>
-      <C.Empty height={40} />
-      <UI.Row>
-        <UI.Text>Already have an account?</UI.Text>
-        <UI.TextBtn onPress={toSignIn}>
-          <UI.Bold>Sign In</UI.Bold>
-        </UI.TextBtn>
-      </UI.Row>
       <C.Flex />
-      <Button title="Sign Up" type="normal" onPress={onPress} />
+      <Button title="Sign In" type="normal" onPress={onPress} />
       <UI.ActivityIndicator animating={busy} />
     </UI.Container>
   )
 }
 
-const {useSignUp} = AuthHooks
-export default SignUpScreen
+const {useSignIn} = AuthHooks
+export default SignInScreen

@@ -1,4 +1,5 @@
-import {TEpic} from '@type/TEpic'
 import {combineEpics} from 'redux-observable'
 
-export const rootEpic = combineEpics(...([] as TEpic[]))
+import {authEpics} from './auth.epic'
+
+export const rootEpic = combineEpics(...authEpics)

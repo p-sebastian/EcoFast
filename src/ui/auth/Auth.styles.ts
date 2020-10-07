@@ -11,10 +11,11 @@ export const AuthStyles = {
   `,
 
   Title: styled.Text`
-    font-size: 28px;
+    font-size: 20px;
     color: ${takeColor('white')};
     width: 80%;
-    align-self: flex-start;
+    text-align: center;
+    margin-bottom: 20px;
   `,
 
   Subtitle: styled.Text`
@@ -52,11 +53,13 @@ export const AuthStyles = {
   Text: styled.Text`
     font-size: 13px;
     margin-left: 5px;
+    color: ${takeColor('white')};
   `,
 
   Bold: styled.Text`
     font-size: 13px;
     margin-left: 2px;
+    color: ${takeColor('primary')};
   `,
 
   Warning: styled.Text`
