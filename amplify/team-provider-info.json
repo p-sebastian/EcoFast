@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ecofast-dev-150946-authRole",
+      "UnauthRoleArn": "arn:aws:iam::876594000141:role/amplify-ecofast-dev-150946-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::876594000141:role/amplify-ecofast-dev-150946-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-ecofast-dev-150946-deployment",
+      "UnauthRoleName": "amplify-ecofast-dev-150946-unauthRole",
+      "StackName": "amplify-ecofast-dev-150946",
+      "StackId": "arn:aws:cloudformation:us-east-1:876594000141:stack/amplify-ecofast-dev-150946/e36300a0-080f-11eb-b7f4-0e6b90c5010d",
+      "AmplifyAppId": "d32w3f8i8e0qyq"
+    }
+  }
+}
