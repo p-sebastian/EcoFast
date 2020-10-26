@@ -19,6 +19,10 @@ export const Colors = Object.freeze({
 
   background: '#33333d',
   backgroundLight: '#373740',
+
+  gold: '#ffea9e',
+  silver: '#b7dcf7',
+  bronze: '#edaf74',
 })
 
 export interface TTheme {

@@ -23,7 +23,7 @@ function createStoreWithMiddleware<AppState, AnyAction extends Action, TServices
   }
   const persistConfig = {
     key: 'root',
-    blacklist: ['auth'],
+    blacklist: ['location'],
     storage: AsyncStorage,
   }
   const persistedReducer = persistReducer(persistConfig, rootReducer)

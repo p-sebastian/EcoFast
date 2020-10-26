@@ -4,6 +4,7 @@ import {RootStack} from '@navigation/root.navigation'
 import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import {AmplifyService} from '@services/amplify.service'
+import {ApiService} from '@services/api.service'
 import {RootState, rootReducer} from '@slices/root.slice'
 import {TServices} from '@type/TServices'
 import {Theme} from '@util/colors.util'
@@ -37,10 +38,7 @@ const App = () => {
                     headerShown: false,
                     gestureEnabled: false,
                   }}>
-                  <Screen
-                    name={RootNamesEnum.RootStack}
-                    component={RootStack}
-                  />
+                  <Screen name={RootNamesEnum.RootStack} component={RootStack} />
                 </Navigator>
               </NavigationContainer>
             </PersistGate>
@@ -58,12 +56,12 @@ const useInit = () => {
 
   useEffect(() => {
     Amplify.configure(amplifyConfig)
-    const _services = {amplify: AmplifyService.getInstance()}
-    const {store, persistor} = createStoreWithMiddleware<
-      RootState,
-      AnyAction,
-      TServices
-    >(rootEpic, rootReducer, _services)
+    const _services = {amplify: AmplifyService.getInstance(), api: ApiService.getInstance()}
+    const {store, persistor} = createStoreWithMiddleware<RootState, AnyAction, TServices>(
+      rootEpic,
+      rootReducer,
+      _services,
+    )
     setStore(store)
     setPersistor(persistor)
     setServices(_services)

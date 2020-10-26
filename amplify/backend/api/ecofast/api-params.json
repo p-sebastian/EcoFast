@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/location",
+            "lambdaFunction": "locationsLambda",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/location"
+        }
+    ],
+    "resourceName": "ecofast",
+    "apiName": "ecofast",
+    "functionArns": [
+        {
+            "lambdaFunction": "locationsLambda"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-ecofast-dev-150946-authRole",
+        "unAuthRoleName": "amplify-ecofast-dev-150946-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "locationsLambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

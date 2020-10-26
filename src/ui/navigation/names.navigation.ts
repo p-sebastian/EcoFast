@@ -13,4 +13,6 @@ export enum AuthNamesEnum {
 
 export enum MainNamesEnum {
   Home = 'Main_Home',
+  Point = 'Main_Point',
+  Ranking = 'Main_Ranking',
 }

@@ -165,6 +165,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3747BA301DC844BB97664749 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		5D023EFA87D6E8E956718F9B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,14 +246,6 @@
 			name = Fonts;
 			path = "../node_modules/react-native-vector-icons/Fonts";
 			sourceTree = "<group>";
-		};
-		3747BA301DC844BB97664749 /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -392,22 +392,6 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				998ED62114BA4587A8E9DD8E /* AntDesign.ttf in Resources */,
-				27B436E8577545EF82819AA9 /* Entypo.ttf in Resources */,
-				2A9A47AD05B445A486114B4A /* EvilIcons.ttf in Resources */,
-				C67385DF454345C39B9F5E4D /* Feather.ttf in Resources */,
-				8BB2996A463E4EE4B95CFCF4 /* FontAwesome.ttf in Resources */,
-				416428F7164443EDAFBC86B7 /* FontAwesome5_Brands.ttf in Resources */,
-				935EB60C382B4B70B623E4C5 /* FontAwesome5_Regular.ttf in Resources */,
-				12BB9F2CD37D46A3BC2980D1 /* FontAwesome5_Solid.ttf in Resources */,
-				D9C5CA5F1DD24E31A7011D72 /* Fontisto.ttf in Resources */,
-				F419FE8326DC447CB0DA7072 /* Foundation.ttf in Resources */,
-				2810949D94A8476FB0D6242D /* Ionicons.ttf in Resources */,
-				B76F2F7E9D924105BD3CF1B2 /* MaterialCommunityIcons.ttf in Resources */,
-				3A745AABA47A42CEBE8D706B /* MaterialIcons.ttf in Resources */,
-				5B40DE31FB004A168AD2EC3B /* Octicons.ttf in Resources */,
-				F1D9239A8FBC44D19CBB4B2F /* SimpleLineIcons.ttf in Resources */,
-				6F7BC84DF85B478EBFE37C85 /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -508,6 +492,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-EcoFast-EcoFastTests/Pods-EcoFast-EcoFastTests-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -528,6 +513,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
@@ -580,6 +566,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-EcoFast/Pods-EcoFast-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -600,6 +587,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",

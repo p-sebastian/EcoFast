@@ -11,10 +11,12 @@ export enum AuthStateEnum {
 
 type State = {
   status: AuthStateEnum
+  sub: string
 }
 
 const INITIAL_STATE: State = {
   status: AuthStateEnum.None,
+  sub: '',
 }
 
 const authSlice = createSlice({
@@ -22,12 +24,16 @@ const authSlice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     signUp: (_, {}: PayloadAction<AuthSignInPayload>) => {},
-    registered: (state) => {
+    registered: state => {
       state.status = AuthStateEnum.Registered
     },
     login: (_, {}: PayloadAction<AuthSignInPayload>) => {},
-    signedIn: (state) => {
+    signedIn: (state, {payload}: PayloadAction<string>) => {
       state.status = AuthStateEnum.SignedIn
+      state.sub = payload
+    },
+    logout: state => {
+      state.status = AuthStateEnum.Logoff
     },
   },
 })

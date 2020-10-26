@@ -6,11 +6,11 @@ import {AuthHooks} from './Auth.hooks'
 import {AuthStyles as UI} from './Auth.styles'
 
 const SignInScreen: React.FC = () => {
-  const {busy, setValue, params, onPress} = useSignIn()
+  const {busy, setValue, params, onPress, headerHeight} = useSignIn()
   const {email, password} = params
 
   return (
-    <UI.Container>
+    <UI.Container behavior="padding" keyboardVerticalOffset={headerHeight}>
       <C.Empty height={40} />
       <UI.Title>Sign in with your Email and Password</UI.Title>
       <UI.InputContainer>

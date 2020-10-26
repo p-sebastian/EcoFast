@@ -8,7 +8,7 @@ import {MainStack} from './main.navigation'
 import {RootNamesEnum} from './names.navigation'
 
 export const RootStack: React.FC = () => {
-  const status = useASelector((state) => state.auth.status)
+  const status = useASelector(state => state.auth.status)
 
   if (status === AuthStateEnum.SignedIn) {
     return (

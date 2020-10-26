@@ -1,23 +1,13 @@
 import {AuthSignInPayload} from '@slices/auth.interface'
-import {TUser} from '@type/TUser'
+import {TUser} from '@slices/user.interface'
 import {ErrorCode} from '@util/error.util'
 import {Auth} from 'aws-amplify'
 
 export class AmplifyService {
   private static instance: AmplifyService
   private _attributes: TUser | null = null
-  private _identityId: string | null = null
   private constructor() {}
 
-  private async identityId() {
-    if (!this._identityId) {
-      // identityId is a 'Federated Identity', not the userId ie: sub
-      const {identityId} = await this.wrapper(Auth.currentCredentials.bind(Auth), ErrorCode.AuthCurrentCredentials)
-      this._identityId = identityId
-    }
-
-    return this._identityId
-  }
   private async userAttributes(reload = false): Promise<TUser | null> {
     if (this._attributes && !reload) {
       return this._attributes
@@ -63,8 +53,8 @@ export class AmplifyService {
   currentAuthenticatedUser = async (): Promise<TUser | null> => {
     const getCurrentUserInfo = Auth.currentAuthenticatedUser.bind(Auth)
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const currentUserInfo = await this.wrapper(getCurrentUserInfo, ErrorCode.AuthCurrentAuthenticatedUser)
-    return currentUserInfo
+    const {attributes} = await this.wrapper(getCurrentUserInfo, ErrorCode.AuthCurrentAuthenticatedUser)
+    return attributes
   }
 
   async logout(): Promise<void> {
@@ -75,12 +65,13 @@ export class AmplifyService {
     }
   }
 
-  signUp = async ({password, email}: AuthSignInPayload): Promise<void> => {
+  signUp = async ({password, email}: AuthSignInPayload): Promise<string> => {
     const bound = Auth.signUp.bind(Auth, {
       username: email.toLocaleLowerCase(),
       password, // Do not lowercase the password
     })
-    await this.wrapper(bound, ErrorCode.AuthSignUp)
+    const user = await this.wrapper(bound, ErrorCode.AuthSignUp)
+    return user.userSub
   }
 
   signIn = async ({password, email}: AuthSignInPayload) => {
