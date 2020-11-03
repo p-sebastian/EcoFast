@@ -12,3 +12,8 @@ export type TPoint = {
     email: string
   }
 }
+
+export type TRedeemRequest = {
+  sub: string
+  promoId: string
+}

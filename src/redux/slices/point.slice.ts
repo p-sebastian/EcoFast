@@ -5,11 +5,13 @@ import {TPoint} from './point.interface'
 type State = {
   keys: string[]
   points: {[id: string]: TPoint}
+  qrOpen: boolean
 }
 
 const INITIAL_STATE: State = {
   keys: [],
   points: {},
+  qrOpen: false,
 }
 
 const pointSlice = createSlice({
@@ -18,7 +20,12 @@ const pointSlice = createSlice({
   reducers: {
     recycle: (_, {}: PayloadAction<{amount: number; location: string}>) => {},
     getRankings: () => {},
-    setRankings: (_, {payload}: PayloadAction<State>) => payload,
+    setRankings: (state, {payload}: PayloadAction<Omit<State, 'qrOpen'>>) => {
+      return {...state, ...payload}
+    },
+    toggleQr: (state, {payload}: PayloadAction<boolean>) => {
+      state.qrOpen = payload
+    },
   },
 })
 

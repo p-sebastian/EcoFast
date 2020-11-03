@@ -1,3 +1,5 @@
+import {BlurView} from '@react-native-community/blur'
+import {Colors} from '@util/colors.util'
 import {extractFn, takeColor} from '@util/recipies.util'
 import Icon from 'react-native-vector-icons/Ionicons'
 import styled from 'styled-components/native'
@@ -8,7 +10,7 @@ export const RankingStyles = {
     background-color: ${takeColor('background')};
   `,
 
-  Item: styled.TouchableOpacity`
+  Item: styled.TouchableOpacity<{even: boolean; me: boolean}>`
     height: 60px;
     flex-direction: row;
     align-items: center;
@@ -18,6 +20,7 @@ export const RankingStyles = {
     border-bottom-width: 2px;
     border-bottom-color: ${takeColor('backgroundLight')};
     border-color: ${takeColor('primary')};
+    background-color: ${extractFn<{me: boolean}>('me', m => (m ? Colors.backgroundDark : Colors.background))};
   `,
 
   Title: styled.Text`
@@ -34,4 +37,16 @@ export const RankingStyles = {
   `,
 
   Medal: styled(Icon).attrs({name: 'medal-outline', size: 30})``,
+
+  QRBox: styled(BlurView).attrs({blurType: 'dark'})`
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+  `,
+
+  Dismiss: styled.TouchableWithoutFeedback``,
 }

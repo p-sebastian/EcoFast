@@ -1,5 +1,5 @@
 import {IconButton} from '@components/IconButton.component'
-import {useAuthAction} from '@hooks/useAction.hook'
+import {useAuthAction, usePointAction} from '@hooks/useAction.hook'
 import {useNavigation} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import HomeScreen from '@ui/home/Home.screen'
@@ -16,7 +16,11 @@ export const MainStack: React.FC = () => (
       component={HomeScreen}
       options={{title: 'EcoFast', headerRight: () => <Logout />, headerLeft: () => <Trophy />}}
     />
-    <Screen name={MainNamesEnum.Ranking} component={RankingScreen} options={{title: 'Ranking'}} />
+    <Screen
+      name={MainNamesEnum.Ranking}
+      component={RankingScreen}
+      options={{title: 'Ranking', headerRight: () => <QR />}}
+    />
   </Navigator>
 )
 
@@ -24,9 +28,17 @@ const Logout: React.FC = React.memo(() => {
   const logout = useAuthAction('logout')
   return <IconButton name="logout" uses="material" size={24} onPress={logout} right={15} />
 })
+
 const Trophy: React.FC = React.memo(() => {
   const {navigate} = useNavigation()
   const nav = useCallback(() => navigate(MainNamesEnum.Ranking), [])
   return <IconButton name="trophy" uses="material-community" size={24} onPress={nav} left={15} />
 })
+
+const QR: React.FC = React.memo(() => {
+  const action = usePointAction('toggleQr')
+  const open = useCallback(() => action(true), [])
+  return <IconButton name="qrcode" uses="font-awesome" size={24} onPress={open} right={15} />
+})
+
 const {Screen, Navigator} = createStackNavigator()

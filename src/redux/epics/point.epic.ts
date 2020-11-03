@@ -22,7 +22,7 @@ e[e.length] = (action$, state$, {api}) =>
     filter(pointActions.getRankings.match),
     switchMap(api.getPoints),
     map(res => {
-      const state: TPointState = {
+      const state: Omit<TPointState, 'qrOpen'> = {
         keys: [],
         points: {},
       }

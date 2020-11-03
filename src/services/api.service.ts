@@ -1,5 +1,6 @@
 import {TLocation} from '@slices/location.interface'
-import {TPoint, TRecycleRequest} from '@slices/point.interface'
+import {TPoint, TRecycleRequest, TRedeemRequest} from '@slices/point.interface'
+import {TRestaurant} from '@slices/restaurant.interface'
 import {TUser} from '@slices/user.interface'
 import {wrapper} from '@util/recipies.util'
 import axios, {AxiosResponse} from 'axios'
@@ -27,8 +28,12 @@ export class ApiService {
 
   getLocations = () => wrapper<AxiosResponse<TLocation[]>>(axios.get.bind(null, `${this.url}/location`) as any, 400)
   getPoints = () => wrapper<AxiosResponse<TPoint[]>>(axios.get.bind(null, `${this.url}/point`) as any, 400)
+  getRestaurant = (id: string) =>
+    wrapper<AxiosResponse<TRestaurant>>(axios.get.bind(null, `${this.url}/restaurant/${id}`) as any, 400)
   createUser = (user: Omit<TUser, '_id'>) =>
     wrapper<AxiosResponse<TUser>>(axios.put.bind(null, `${this.url}/user`, user, {headers}) as any, 400)
   recyclePoints = (point: TRecycleRequest) =>
     wrapper<AxiosResponse<TPoint>>(axios.put.bind(null, `${this.url}/point`, point, {headers}) as any, 400)
+  redeemPoints = (redeem: TRedeemRequest) =>
+    wrapper<AxiosResponse<TPoint>>(axios.post.bind(null, `${this.url}/promo/redeem`, redeem, {headers}) as any, 400)
 }

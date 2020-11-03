@@ -2,6 +2,7 @@ import {authActions} from '@slices/auth.slice'
 import {locationActions} from '@slices/location.slice'
 import {mapActions} from '@slices/map.slice'
 import {pointActions} from '@slices/point.slice'
+import {restaurantActions} from '@slices/restaurant.slice'
 import {useCallback} from 'react'
 import {useDispatch} from 'react-redux'
 
@@ -23,3 +24,4 @@ export const useAuthAction = makeActionHook(authActions)
 export const useLocationAction = makeActionHook(locationActions)
 export const useMapAction = makeActionHook(mapActions)
 export const usePointAction = makeActionHook(pointActions)
+export const useRestaurantAction = makeActionHook(restaurantActions)

@@ -5,6 +5,7 @@ platform :ios, '10.0'
 
 target 'EcoFast' do
   rn_maps_path = '../node_modules/react-native-maps'
+  permissions_path = '../node_modules/react-native-permissions/ios'
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
@@ -13,6 +14,9 @@ target 'EcoFast' do
   pod 'react-native-google-maps', path: rn_maps_path
   pod 'GoogleMaps'
   pod 'Google-Maps-iOS-Utils'
+
+  # Permissions
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera.podspec"
 
   target 'EcoFastTests' do
     inherit! :complete

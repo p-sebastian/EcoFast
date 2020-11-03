@@ -1,7 +1,9 @@
-import {usePointAction} from '@hooks/useAction.hook'
+import {usePointAction, useRestaurantAction} from '@hooks/useAction.hook'
 import {Colors} from '@util/colors.util'
+import {logger} from '@util/logger.util'
 import {useASelector} from '@util/recipies.util'
-import {useEffect} from 'react'
+import {useCallback, useEffect, useState} from 'react'
+import {Event} from 'react-native-qrcode-scanner'
 
 const useRanking = () => {
   const getPoints = usePointAction('getRankings')
@@ -14,8 +16,35 @@ const useRanking = () => {
   return {keys}
 }
 
+const useQR = () => {
+  const open = useASelector(state => state.point.qrOpen)
+  const getRestaurant = useRestaurantAction('getRestaurant')
+  const toggle = usePointAction('toggleQr')
+  const [showPromos, setShowPromos] = useState(false)
+  const close = useCallback(() => {
+    toggle(false)
+    setShowPromos(false)
+  }, [])
+
+  const onSuccess = useCallback((url: Event) => {
+    logger.info(url.data)
+    getRestaurant(url.data)
+    setShowPromos(true)
+  }, [])
+
+  useEffect(() => {
+    if (!open && showPromos) {
+      setShowPromos(false)
+    }
+  }, [open])
+
+  return {open, close, onSuccess, showPromos}
+}
+
 const useRankingItem = (id: string, position: number) => {
+  const email = useASelector(state => state.auth.email)
   const point = useASelector(state => state.point.points[id], [id])
+  const me = email === point.user.email
   let color = Colors.primaryLight
   if (position === 0) {
     color = Colors.gold
@@ -27,7 +56,7 @@ const useRankingItem = (id: string, position: number) => {
     color = Colors.bronze
   }
 
-  return {point, color}
+  return {point, color, me}
 }
 
-export const RankingHooks = {useRanking, useRankingItem}
+export const RankingHooks = {useRanking, useRankingItem, useQR}
